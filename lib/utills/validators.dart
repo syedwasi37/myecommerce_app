@@ -29,20 +29,45 @@ class FormValidator {
   }
 
   static String? validatePassword(String? input) {
-    if (input!.isEmpty) {
-      return "Password is Required";
-    } else if (input.length < 6) {
-      return "Password must contain more than 6 characters";
-    }
-    return null;
+  if (input == null || input.isEmpty) {
+    return "Password is Required";
   }
 
-  static String? validateConfirmPassword(String? input, password) {
-    if (input!.isEmpty) {
-      return "Confirm Password is Required";
-    } else if (input != password) {
-      return "Password does not match";
-    }
-    return null;
+  // Must be at least 8 characters
+  if (input.length < 8) {
+    return "Password must be at least 8 characters long";
   }
+
+  // Must contain uppercase
+  if (!RegExp(r'[A-Z]').hasMatch(input)) {
+    return "Include at least one uppercase letter (A-Z)";
+  }
+
+  // Must contain lowercase
+  if (!RegExp(r'[a-z]').hasMatch(input)) {
+    return "Include at least one lowercase letter (a-z)";
+  }
+
+  // Must contain number
+  if (!RegExp(r'[0-9]').hasMatch(input)) {
+    return "Include at least one number";
+  }
+
+  // Must contain special character
+  if (!RegExp(r'[!@#\$&*~%^-_=+]').hasMatch(input)) {
+    return "Include at least one special character";
+  }
+
+  return null;
+}
+
+  static String? validateConfirmPassword(String? input, String password) {
+  if (input == null || input.isEmpty) {
+    return "Confirm Password is Required";
+  }
+  if (input != password) {
+    return "Passwords do not match";
+  }
+  return null;
+}
 }
