@@ -14,7 +14,7 @@ ThemeData appTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.deepOrangeAccent,
-      foregroundColor: Colors.white70,
+      foregroundColor: const Color.fromARGB(179, 206, 203, 203),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       textStyle: TextStyle(fontSize: 18),
     ),
